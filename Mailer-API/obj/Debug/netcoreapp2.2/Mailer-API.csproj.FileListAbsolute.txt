@@ -1,0 +1,14 @@
+G:\Mailer-API\Mailer-API\bin\Debug\netcoreapp2.2\Mailer-API.deps.json
+G:\Mailer-API\Mailer-API\bin\Debug\netcoreapp2.2\Mailer-API.runtimeconfig.json
+G:\Mailer-API\Mailer-API\bin\Debug\netcoreapp2.2\Mailer-API.runtimeconfig.dev.json
+G:\Mailer-API\Mailer-API\bin\Debug\netcoreapp2.2\Mailer-API.dll
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.csprojAssemblyReference.cache
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.csproj.CoreCompileInputs.cache
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.RazorAssemblyInfo.cache
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.RazorAssemblyInfo.cs
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.AssemblyInfoInputs.cache
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.AssemblyInfo.cs
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.RazorTargetAssemblyInfo.cache
+G:\Mailer-API\Mailer-API\bin\Debug\netcoreapp2.2\Mailer-API.pdb
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.dll
+G:\Mailer-API\Mailer-API\obj\Debug\netcoreapp2.2\Mailer-API.pdb
