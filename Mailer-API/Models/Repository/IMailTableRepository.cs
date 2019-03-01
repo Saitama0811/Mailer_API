@@ -18,5 +18,6 @@ namespace Mailer_API.Models.Repository
         void changeMailStatus(int mail_id);
         MailTable openMailByClicking(long mail_id);
         void deleteTrashMail(int mail_id);
+        IEnumerable<MailTable> searchMail(MailTable mailTable);
     }
 }

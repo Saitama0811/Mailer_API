@@ -88,5 +88,10 @@ namespace Mailer_API.Models.Repository
         {
             return _context.mail_table.SingleOrDefault(m => m.mail_ID == mail_id);
         }
+
+        public IEnumerable<MailTable> searchMail(MailTable mailTable)
+        {
+            return _context.mail_table.Where(x => x.mail_subject == mailTable.mail_subject);
+        }
     }
 }
