@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mailer_API.Controllers
 {
     [Route("api/[controller]")]
-    public class SentMailController : Controller
+    [ApiController]
+    public class SentMailController : ControllerBase
     {
         private readonly IMailTableRepository _context;
 
@@ -21,7 +22,7 @@ namespace Mailer_API.Controllers
         }
 
         // GET: api/<controller>
-        [HttpGet]
+        [HttpPost]
         public IEnumerable<MailTable> Get([FromBody]UserTable user)
         {
             return _context.getAllSentMails(user.username).ToList();
@@ -36,7 +37,7 @@ namespace Mailer_API.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromRoute]int id)
         {
             _context.deleteSentmail(id);
             return Ok("delete");

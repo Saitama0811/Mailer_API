@@ -64,7 +64,7 @@ namespace Mailer_API.Models.Repository
 
         public IEnumerable<MailTable> getAllSentMails(string username)
         {
-            return _context.mail_table.Where(x => x.mail_from == username).ToList();
+            return _context.mail_table.Where(x => (x.receiver_delete_status == "false") && (x.mail_from == username)).ToList();
         }
 
         public IEnumerable<MailTable> getImportantMail(string username)
