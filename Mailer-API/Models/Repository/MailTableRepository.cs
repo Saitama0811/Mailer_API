@@ -59,7 +59,7 @@ namespace Mailer_API.Models.Repository
 
         public IEnumerable<MailTable> getAllReceivedMails(string username)
         {
-            return _context.mail_table.Where(x => x.mail_to_1 == username || x.mail_to_2 == username || x.mail_to_3 == username || x.mail_to_4 == username || x.mail_to_5 == username);
+            return _context.mail_table.Where(x => (x.receiver_delete_status == "false") && (x.mail_to_1 == username || x.mail_to_2 == username || x.mail_to_3 == username || x.mail_to_4 == username || x.mail_to_5 == username));
         }
 
         public IEnumerable<MailTable> getAllSentMails(string username)

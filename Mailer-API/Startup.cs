@@ -28,6 +28,10 @@ namespace Mailer_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy("Cors", builder =>
+             {
+                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+             }));
             services.AddDbContext<dbContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:Mailer_DB"]));
             services.AddScoped<IMailTableRepository, MailTableRepository>();
             services.AddScoped<IDraftMailTableRepository, DraftMailTableRepository>();
@@ -41,6 +45,7 @@ namespace Mailer_API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors("Cors");
             }
             else
             {

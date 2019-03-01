@@ -23,7 +23,7 @@ namespace Mailer_API.Controllers
         }
 
         // GET: api/<controller>
-        [HttpGet]
+        [HttpPost]
         public IEnumerable<MailTable> Get([FromBody]UserTable user)
         {
             return _context.getAllReceivedMails(user.username).ToList();
@@ -39,7 +39,7 @@ namespace Mailer_API.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromRoute]int id)
         {
             _context.deleteReceivedMail(id);
             return Ok("deleted");
