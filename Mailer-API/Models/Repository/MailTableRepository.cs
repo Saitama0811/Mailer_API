@@ -45,9 +45,10 @@ namespace Mailer_API.Models.Repository
             _context.SaveChanges();
         }
 
-        public void deleteTrashMail(int mail_id)
+        public void deleteTrashMail(int mail_ID)
         {
-            var delete_obj = _context.mail_table.SingleOrDefault(m => m.mail_ID == mail_id && (m.receiver_delete_status == "true" || m.sender_delete_status == "true"));
+            // MailTable mailTable = _context.mail_table.Find(mail_ID);
+            var delete_obj = _context.mail_table.SingleOrDefault(m => (m.mail_ID == mail_ID) && (m.receiver_delete_status == "true" || m.sender_delete_status == "true"));
             _context.mail_table.Remove(delete_obj);
             _context.SaveChanges();
         }
@@ -69,13 +70,13 @@ namespace Mailer_API.Models.Repository
 
         public IEnumerable<MailTable> getImportantMail(string username)
         {
-             return _context.mail_table.Where(x => (x.mail_to_1 == username || x.mail_to_2 == username || x.mail_to_3 == username || x.mail_to_4 == username || x.mail_to_5 == username) && x.is_important == 1);
+             return _context.mail_table.Where(x => (x.mail_to_1 == username || x.mail_to_2 == username || x.mail_to_3 == username || x.mail_to_4 == username || x.mail_to_5 == username) && ((x.is_important == 1) && (x.receiver_delete_status == "false")));
             
         }
 
         public IEnumerable<MailTable> getStarredMail(string username)
         {
-            return _context.mail_table.Where(x => (x.mail_to_1 == username || x.mail_to_2 == username || x.mail_to_3 == username || x.mail_to_4 == username || x.mail_to_5 == username) && x.is_starred == 1);
+            return _context.mail_table.Where(x => ((x.is_starred == 1) && (x.receiver_delete_status == "false")) && (x.mail_to_1 == username || x.mail_to_2 == username || x.mail_to_3 == username || x.mail_to_4 == username || x.mail_to_5 == username) );
         }
 
         public IEnumerable<MailTable> getTrashMail(string username)

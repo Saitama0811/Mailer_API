@@ -21,7 +21,7 @@ namespace Mailer_API.Controllers
         }
 
         // GET: api/<controller>
-        [HttpGet]
+        [HttpPost]
         public IEnumerable<MailTable> Get([FromBody]UserTable user)
         {
             return _context.getStarredMail(user.username).ToList();

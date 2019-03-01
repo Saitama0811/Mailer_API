@@ -21,7 +21,7 @@ namespace Mailer_API.Controllers
         }
 
         // GET: api/<controller>
-        [HttpGet]
+        [HttpPost]
         public IEnumerable<MailTable> Get([FromBody]UserTable user)
         {
             return _context.getTrashMail(user.username).ToList();
@@ -37,7 +37,7 @@ namespace Mailer_API.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromRoute]int id)
         {
             _context.deleteTrashMail(id);
             return Ok("deleted");
