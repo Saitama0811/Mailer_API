@@ -11,23 +11,20 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mailer_API.Controllers
 {
     [Route("api/[controller]")]
-    public class CreateMailController : Controller
+    public class SaveDraftController : Controller
     {
+        private readonly IDraftMailTableRepository _context;
 
-        private readonly IMailTableRepository _context;
-
-        public CreateMailController(IMailTableRepository context)
+        public SaveDraftController(IDraftMailTableRepository context)
         {
             _context = context;
         }
 
-        // POST api/<controller>
+        // GET: api/<controller>
         [HttpPost]
-        public string Post([FromBody]MailTable mailTable)
+        public void SaveMail([FromBody] DraftMailTable draftMailTable)
         {
-            _context.createmail(mailTable);
-            return "entered";
+            _context.savedraftmail(draftMailTable);
         }
     }
 }
-

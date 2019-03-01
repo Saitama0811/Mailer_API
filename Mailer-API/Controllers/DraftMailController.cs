@@ -21,7 +21,7 @@ namespace Mailer_API.Controllers
         }
 
         // GET: api/<controller>
-        [HttpGet]
+        [HttpPost]
         public IEnumerable<DraftMailTable> Get([FromBody]UserTable user)
         {
             return _context.getAllDraftMails(user.username).ToList();
@@ -37,17 +37,12 @@ namespace Mailer_API.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromRoute]int id)
         {
             _context.deletedraftmail(id);
             return Ok("deleted");
         }
 
-        [HttpPost]
-        public IActionResult SaveMail([FromBody] DraftMailTable draftMailTable)
-        {
-            _context.savedraftmail(draftMailTable);
-            return Ok("Added");
-        }
+        
     }
 }
