@@ -20,11 +20,20 @@ namespace Mailer_API.Controllers
             _context = context;
         }
 
-        [HttpPost]
-        public IEnumerable<MailTable> Post([FromBody]MailTable mailTable)
+        
+    [HttpPost]
+        public IEnumerable<MailTable> Post([FromBody]customSearchObj obj)
         {
-            return _context.searchMail(mailTable).ToList();
+            return _context.searchMail(obj).ToList();
             
         }
+
+        [HttpGet("{mail_id}")]
+        public MailTable GetMail([FromRoute] long mail_id)
+        {
+            return _context.openSearchMailByClicking(mail_id);
+        }
     }
+
+   
 }

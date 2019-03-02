@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mailer_API.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -89,9 +90,19 @@ namespace Mailer_API.Models.Repository
             return _context.mail_table.SingleOrDefault(m => m.mail_ID == mail_id);
         }
 
-        public IEnumerable<MailTable> searchMail(MailTable mailTable)
+        public IEnumerable<MailTable> searchMail(customSearchObj obj)
         {
-            return _context.mail_table.Where(x => x.mail_subject == mailTable.mail_subject);
+            return _context.mail_table.Where(x => ((x.mail_subject == obj.mail_subject) && (x.receiver_delete_status == "false" || x.sender_delete_status == "false")) && (x.mail_to_1 == obj.username || x.mail_to_2 == obj.username || x.mail_to_3 == obj.username || x.mail_to_4 == obj.username || x.mail_to_5 == obj.username));
         }
+
+        public MailTable openSearchMailByClicking(long mail_id)
+        {
+            return _context.mail_table.SingleOrDefault(m => m.mail_ID == mail_id);
+        }
+    }
+    public class customSearchObj
+    {
+        public string username;
+        public string mail_subject;
     }
 }
