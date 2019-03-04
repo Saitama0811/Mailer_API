@@ -31,8 +31,12 @@ namespace Mailer_API.Models.Repository
 
         public void registerUser(UserTable userTable)
         {
-            _context.user_table.Add(userTable);
-            _context.SaveChanges();
+            var user_name = _context.user_table.SingleOrDefault(m => m.username == userTable.username || m.phone_number == userTable.phone_number);
+            if (user_name == null)
+            {
+                _context.user_table.Add(userTable);
+                _context.SaveChanges();
+            }
         }
 
         public void UpdatePassword()
