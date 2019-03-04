@@ -16,12 +16,12 @@ namespace Mailer_API.Models.Repository
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
-        public bool doLogin(string username, string password)
+        public bool doLogin(UserTable user)
         {
-            var user_name = _context.user_table.SingleOrDefault(m => m.username == username && m.password == password);
+            var user_name = _context.user_table.SingleOrDefault(m => m.username == user.username && m.password == user.password);
 
             if (user_name == null)
                 return false;
@@ -29,24 +29,15 @@ namespace Mailer_API.Models.Repository
             return true;
         }
 
-        public void doLogOut()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<UserTable> getAllUsers()
-        {
-            return _context.user_table.ToList();
-        }
-
         public void registerUser(UserTable userTable)
         {
-            
+            _context.user_table.Add(userTable);
+            _context.SaveChanges();
         }
 
         public void UpdatePassword()
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }

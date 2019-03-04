@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Mailer_API.Models.Repository
 {
-    interface IUserTableRepository : IDisposable
+    public interface IUserTableRepository : IDisposable
     {
-        IEnumerable<UserTable> getAllUsers();
         void UpdatePassword();
-        bool doLogin(string username, string password);
+        bool doLogin(UserTable user);
         void registerUser(UserTable userTable);
-        void doLogOut();
     }
 }

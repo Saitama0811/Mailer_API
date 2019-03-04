@@ -96,6 +96,8 @@ namespace Mailer_API.Migrations
 
                     b.Property<string>("sender_delete_status");
 
+                    b.Property<long>("sender_id");
+
                     b.HasKey("mail_ID");
 
                     b.ToTable("mail_table");
